@@ -1,6 +1,8 @@
-from string import ascii_letters
+from string import ascii_letters, digits
 from itertools import product
 import time
+
+letters_digits = ascii_letters+digits #this password can have letters and digits
 
 rep = input("Repeat? ") #The lenght of the password
 if rep.isdigit():
@@ -11,7 +13,7 @@ else:
 #get start time
 begin = time.time()
 
-for passcode in product(ascii_letters, repeat=rep):
+for passcode in product(letters_digits, repeat=rep):
     print(*passcode)
 
 # store end time
@@ -23,4 +25,4 @@ time.sleep(1)
 print(f"Time to check all passwords: {round(end - begin,3)} s")
 
 # total combinations
-print(f"Number of all combinations: {len(ascii_letters)**rep:,}")#add , separation every tree digits
+print(f"Number of all combinations: {len(letters_digits)**rep:,}") #add , separation every tree digits

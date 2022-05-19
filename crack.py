@@ -2,16 +2,27 @@ from string import digits
 from itertools import product
 import time
 
-#get start time
-begin = time.time()
+rep = input("Repeat? ")
+if rep.isdigit():
+    rep = int(rep)
+else:
+    rep = 8
 
-for passcode in product(digits, repeat=8):
+#get start time
+begin = time.time() #The lenght of the password
+
+    
+for passcode in product(digits, repeat=rep):
     print(*passcode)
 
- 
-time.sleep(1)
+
 # store end time
 end = time.time()
-  
-# total time taken
-print(f"Time to check all passwords: {end - begin}")
+
+time.sleep(1)
+
+# total time taken (rounded to 3 decimals)
+print(f"Time to check all passwords: {round(end - begin, 3)} s")
+
+# total combinations
+print(f"Number of all combinations: {len(digits)**rep:,}") #add , separation every tree digits
